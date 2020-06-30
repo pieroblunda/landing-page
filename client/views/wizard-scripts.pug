@@ -1,0 +1,55 @@
+script(defer src="https://pro.fontawesome.com/releases/v5.8.1/js/light.js" integrity="sha384-avwGKnev1pyXYEbWxXSg9S4rpTsws+5vQpoj76SfcccEzOL162Ei8+z4a6AlaMeE" crossorigin="anonymous")
+script(defer src="https://pro.fontawesome.com/releases/v5.8.1/js/brands.js" integrity="sha384-b4zU5X+9uCyU5wpeWBsEIFph6tTD8ERLbUs93uYGQGNqzbcfPDeY6c4jMhTAfBri" crossorigin="anonymous")
+script(defer src="https://pro.fontawesome.com/releases/v5.8.1/js/fontawesome.js" integrity="sha384-w6QYwIdCVqcYkHtaFutVu3VlDeu+pBFvlp7e0/tygMFwnWTl13KuVYfsp0ediPpA" crossorigin="anonymous")
+
+script(src="/public/js/vendor.min.js")
+
+if isDevelopment
+  script(src='/client/app.js')
+  script(src='/client/controllers/wizard.js')
+  //- @CLI-controllers
+  script(src='/client/directives/ng-enter.js')
+  script(src='/client/directives/dropzone.js')
+  //- @CLI-directives
+  script(src='/client/services/templates.js')
+  //- @CLI-services
+  //- @CLI-filters
+  case lang
+    when "es"
+      script(src='/client/constants/dictionary-es.js')
+    when "en"
+      script(src='/client/constants/dictionary-en.js')
+    when "it"
+      script(src='/client/constants/dictionary-it.js')
+    when "pt"
+      script(src='/client/constants/dictionary-pt.js')
+  //- @CLI-constants
+  //-script(src='/public/js/app-ES.min.js')
+else
+  
+  case lang
+    when "es"
+      script(src='/public/js/app-ES.min.js')
+    when "en"
+      script(src='/public/js/app-EN.min.js')
+    when "pt"
+      script(src='/public/js/app-PT.min.js')
+
+//- GoogleAnalytics
+  script.
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q || []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-your-code-here', 'auto');
+    ga('send', 'pageview');
+
+//- LiveChat
+  script.
+    function initFreshChat() {
+      window.fcWidget.init({
+        token: "448f1f84-ce66-4387-923d-3bbd9b7f96fc",
+        host: "https://wchat.freshchat.com"
+      });
+    }
+    function initialize(i,t){var e;i.getElementById(t)?initFreshChat():((e=i.createElement("script")).id=t,e.async=!0,e.src="https://wchat.freshchat.com/js/widget.js",e.onload=initFreshChat,i.head.appendChild(e))}function initiateCall(){initialize(document,"freshchat-js-sdk")}window.addEventListener?window.addEventListener("load",initiateCall,!1):window.attachEvent("load",initiateCall,!1);

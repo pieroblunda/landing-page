@@ -1,0 +1,29 @@
+nav {
+  height: navbarHeight;
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  background-color: #fff;
+}
+nav button {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  padding: 8px 16px;
+  margin: 0;
+  white-space: nowrap;
+  border: none;
+  border-top: 1px solid #cecece;
+  display: inline-block;
+  flex: 1;
+  outline: none;
+  cursor: pointer;
+}
+nav button.active {
+  background-color: #e6e6e6;
+}
+nav button.active h2 {
+  margin-top: 0;
+}
+/*# sourceMappingURL=wizard-nav.css.map */

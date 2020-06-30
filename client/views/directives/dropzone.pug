@@ -1,0 +1,10 @@
+section.dropzone-wrapper
+  label.h4 Imagen
+  .dropzone(ng-show="!ngModel")
+    input.fileUpload(type='file')
+    i.fal.fa-cloud-upload.fa-3x.animated.infinite.jello
+  .img-dropped(ng-show="ngModel" ng-style="{'backgroundImage': 'url(' + ngModel.replace('url(', '').replace(')', '') + ')'}")
+    .overlay
+      .circle(ng-click="deleteImg()")
+        i.fal.fa-trash-alt
+  p.hint(ng-show="!ngModel") Arrastra imagenes JPG, PNG, GIF y WebP (Máx. 16Mb)

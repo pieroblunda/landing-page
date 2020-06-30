@@ -1,0 +1,15 @@
+// main: wizard-main.styl, out: $1.css, sourcemap: true, compress: false
+scrollbarColor = #b6c4ca
+scrollbarBgColor = #eceff1
+scrollbarTrackBg = scrollbarColor
+*
+  scrollbar-width thin
+  scrollbar-color scrollbarColor
+  &::-webkit-scrollbar
+    width scrollbarsWidth
+  &::-webkit-scrollbar-track
+    background scrollbarBgColor
+  &::-webkit-scrollbar-thumb
+    background-color scrollbarColor
+    border-radius 4px
+    border 2px solid scrollbarBgColor

@@ -1,0 +1,207 @@
+article {
+  height: calc(100vh - headerHeight);
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  article {
+    flex-direction: row;
+  }
+}
+article .preview-box {
+  border: none;
+  width: 100%;
+  display: block;
+  flex-grow: 1;
+}
+@media screen and (min-width: 768px) {
+  article .preview-box {
+    order: 2;
+  }
+}
+article .iframe-container {
+  width: 480px;
+  pointer-events: none;
+  transform: translate(-100%, 0);
+}
+article .iframe-container iframe {
+  border: 0;
+  width: 100%;
+  height: auto;
+}
+article aside {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid;
+  height: 100%;
+  transform: translate(-100%, 0);
+  transition-duration: 0.2s;
+  z-index: -1;
+}
+@media screen and (min-width: 768px) {
+  article aside {
+    height: calc(100vh - 45px);
+    width: 480px;
+    border-top: 0;
+    border-right: 1px solid;
+  }
+}
+article section {
+  padding: 8px 16px;
+  background-color: #fff;
+  flex-grow: 1;
+  overflow-y: overlay;
+}
+@media screen and (min-width: 768px) {
+  article section {
+    flex-grow: 1;
+  }
+}
+article section label {
+  display: block;
+}
+article section input {
+  width: 100%;
+}
+article section .sub-menu-wrapper {
+  display: flex;
+  height: 42px;
+  margin: 0 -4px;
+  padding: 8px 0;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+}
+article section .sub-menu-wrapper button {
+  flex: 1;
+  margin: 0 4px;
+  text-transform: uppercase;
+  border: 0;
+  background-color: #e6e6e6;
+  color: #000;
+  padding: 0 16px;
+  border-radius: 15px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  outline: none;
+  cursor: pointer;
+}
+article section .sub-menu-wrapper button.active {
+  background-color: #0466c8;
+  color: #fff;
+}
+article section .img-wrapper {
+  width: calc(50% - 2px);
+  height: 100px;
+  background-size: cover;
+  background-position: center center;
+  display: block;
+  float: left;
+  margin: 2px;
+}
+article section .img-wrapper:nth-child(odd) {
+  margin-left: 0;
+}
+article section .img-wrapper:nth-child(even) {
+  margin-right: 0;
+}
+article section .img-wrapper .img-overlay {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+article section .img-wrapper .img-overlay.active {
+  background-color: rgba(5,102,236,0.451);
+}
+article section.categories .type-wedding {
+  background-image: url("/public/gallery/wedding-1.jpg");
+}
+article section.categories .type-childrenbirth {
+  background-image: url("/public/media/cover-category-toy-story.jpg");
+}
+article section.categories .text-layer {
+  background-color: rgba(53,50,50,0.588);
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  padding: 8px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+article section.templates {
+  padding-top: 0;
+}
+article section.pictures {
+  padding-top: 0;
+}
+article section .btn-dresscode {
+  height: calc(40%);
+  width: calc(50% - 16px);
+  margin: 8px;
+}
+article section .btn-dresscode .svg-inline--fa {
+  display: block;
+  margin: 4px auto;
+}
+article section.control-bar {
+  flex-grow: 0;
+}
+article section.control-bar button {
+  width: 33.333%;
+}
+article section.done {
+  text-align: center;
+  height: calc(100vh - var(--header-height) - var(--navbar-height));
+}
+article section.done .url-container {
+  background-color: #efefef;
+  border-radius: 4px;
+  padding: 8px;
+  margin: 8px auto;
+  cursor: pointer;
+  display: block;
+  width: fit-content;
+}
+article section.done .url-container svg[role="img"] {
+  margin-left: 8px;
+}
+article section.done .share-container {
+  background-color: #efefef;
+  border-radius: 4px;
+  padding: 16px;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+article section.done .icon-share {
+  margin: 0 16px;
+}
+article section.done .demo-container {
+  border: 1px solid #ff8c00;
+  padding: 16px;
+  text-align: left;
+}
+article section.done .demo-container .svg-inline--fa {
+  color: #ff8c00;
+}
+article section.done .demo-container button {
+  width: 100%;
+  padding: 16px;
+  display: block;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+article section.done .demo-container button.read-more {
+  margin-bottom: 8px;
+  background-color: transparent;
+  color: #999;
+  border: 2px solid currentColor;
+}
+article section.done .demo-container button.purchase {
+  background-color: #006400;
+  color: #fff;
+  border: 0;
+}
+/*# sourceMappingURL=wizard-step-customize.css.map */

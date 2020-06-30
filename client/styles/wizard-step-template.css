@@ -1,0 +1,42 @@
+.step-pick-template {
+  height: calc(100vh - headerHeight - navbarHeight);
+}
+.step-pick-template section {
+  height: 100%;
+  display: flex;
+  overflow-x: scroll;
+}
+.step-pick-template section img {
+  height: 90%;
+  margin: auto 30px;
+  border-radius: 15px;
+}
+.step-pick-template .nav-template {
+  overflow-x: overlay;
+}
+.step-confirm-template {
+  height: calc(100vh - headerHeight);
+}
+.step-confirm-template .img-wrapper {
+  height: 100%;
+  overflow-y: overlay;
+}
+.step-confirm-template .img-wrapper img {
+  width: 100%;
+  display: block;
+}
+.step-confirm-template .confirm-wrapper {
+  padding: 15px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.step-confirm-template .confirm-wrapper button {
+  background-color: #006400;
+  padding: 15px;
+  border: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+/*# sourceMappingURL=wizard-step-template.css.map */

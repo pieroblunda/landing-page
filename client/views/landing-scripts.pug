@@ -1,0 +1,53 @@
+script(defer src="https://pro.fontawesome.com/releases/v5.13.0/js/light.js" crossorigin="anonymous")
+script(defer src="https://pro.fontawesome.com/releases/v5.13.0/js/brands.js" crossorigin="anonymous")
+script(defer src="https://pro.fontawesome.com/releases/v5.13.0/js/fontawesome.js" crossorigin="anonymous")
+script(src="/public/js/vendor.min.js")
+script(src="/public/js/countdown.js")
+
+script.
+  Date.prototype.addDays = function(days) {
+      var date = new Date(this.valueOf());
+      date.setDate(date.getDate() + days);
+      return date;
+  }
+  var date = new Date();
+  window.setCountdown(date.addDays(7));
+
+if (process.env.NODE_ENV === 'development')
+  script(src='/client/app.js')
+  script(src='/client/controllers/landing.js')
+  //- @CLI-controllers
+  //- @CLI-directives
+  script(src='/client/services/landing.js')
+  //- @CLI-services
+  //- @CLI-filters
+  case lang
+    when "es"
+      script(src='/client/constants/dictionary-es.js')
+    when "en"
+      script(src='/client/constants/dictionary-en.js')
+    when "it"
+      script(src='/client/constants/dictionary-it.js')
+    when "pt"
+      script(src='/client/constants/dictionary-pt.js')
+  //- @CLI-constants
+  //-script(src='/public/js/app-ES.min.js')
+else
+  
+  case lang
+    when "es"
+      script(src='/public/js/app-ES.min.js')
+    when "en"
+      script(src='/public/js/app-EN.min.js')
+    when "pt"
+      script(src='/public/js/app-PT.min.js')
+
+//- LiveChat
+  script.
+    function initFreshChat() {
+      window.fcWidget.init({
+        token: "448f1f84-ce66-4387-923d-3bbd9b7f96fc",
+        host: "https://wchat.freshchat.com"
+      });
+    }
+    function initialize(i,t){var e;i.getElementById(t)?initFreshChat():((e=i.createElement("script")).id=t,e.async=!0,e.src="https://wchat.freshchat.com/js/widget.js",e.onload=initFreshChat,i.head.appendChild(e))}function initiateCall(){initialize(document,"freshchat-js-sdk")}window.addEventListener?window.addEventListener("load",initiateCall,!1):window.attachEvent("load",initiateCall,!1);

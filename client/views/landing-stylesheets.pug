@@ -1,0 +1,9 @@
+link(href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Raleway&display=swap" rel="stylesheet")
+
+if (process.env.NODE_ENV === 'development')
+  link(href="/client/styles/landing-main.styl.css" rel="stylesheet" type="text/css")
+  //-link(href="/public/css/vendor.min.css" rel="stylesheet" type="text/css")
+
+else
+
+  link(href='/public/css/stylus.min.css', rel='stylesheet', type='text/css')

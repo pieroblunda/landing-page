@@ -1,0 +1,275 @@
+doctype html
+html(lang=lang)
+  head
+    script(async src="https://www.googletagmanager.com/gtag/js?id=UA-158637677-3")
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-158637677-3');
+
+    //- Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    include landing-stylesheets.pug
+    title Hello, world!
+  body(ng-app="App")
+    main(ng-controller="landingController")
+      //- Que es?
+      section.hero.inverted
+        .container
+          .row.d-flex.vertical-align.gutted
+            .col
+              h1 {{ 'landing.hero.h1' | translate }}
+              p.text-large {{ 'landing.hero.p' | translate }}
+              a.btn-primary(href="#") {{ 'landing.hero.cta' | translate }}
+            .col(style="height:7rem;")
+            //-
+              video.img-fluid(controls)
+                source(src="/public/media/big-buck-bunny.webm" type="video/mp4")
+                source(src="/public/media/big-buck-bunny.mp4" type="video/ogg")
+                source(src="/public/media/big-buck-bunny.ogv" type="video/ogg")
+                | Your browser does not support the video tag.
+      
+      //- Que problema resuelve? (Casamientos, Cumpleanos, Despedidas)
+      section.neck
+        .container
+          .row.d-flex.container
+            .col.text-center
+              h2 {{ 'landing.neck.h1' | translate }}
+              p.text-large {{ 'landing.neck.p' | translate }}
+          .row.d-flex.container
+            .col.text-center
+              img.img-fluid(src="/public/media/group-of-people.jpg")
+      
+      section.how-helps-you
+        .container
+          .row.d-flex.gutted
+            .col.order-2.bg-blue
+              #countdown
+            .col.order-1
+              h3
+                small {{ 'landing.how-helps-you-countdown.small' | translate }}
+                | {{ 'landing.how-helps-you-countdown.h2' | translate }}
+              p {{ 'landing.how-helps-you-countdown.p' | translate }}
+          .row.d-flex.gutted
+            .col.text-right
+              h3
+                small {{ 'landing.how-helps-you-menu.small' | translate }}
+                | {{ 'landing.how-helps-you-menu.h2' | translate }}
+              p {{ 'landing.how-helps-you-menu.p' | translate }} 
+            .col
+              .question-wrapper.bg-blue(
+              ng-click="setQuestionWrapperStatus('dirty')"
+              ng-class="{'dirty': questionWrapperStatus === 'dirty'}")
+                p Que prefieres de menu?
+                button(
+                ng-click="setQuestionOption('meet')"
+                ng-class="{'clicked': questionOption === 'meet'}")
+                  i.fal.fa-turkey.fa-2x
+                button(
+                ng-click="setQuestionOption('vegetable')"
+                ng-class="{'clicked': questionOption === 'vegetable'}")
+                  i.fal.fa-carrot.fa-2x
+                  
+          .row.d-flex.gutted
+            .col.order-2.text-center.bg-blue.qr-container
+              img(src="/public/media/qr-code.svg" alt="qr-code")
+              p.amatic-text Usa la camara para escanear el qr
+            .col.order-1
+              h3
+                small {{ 'landing.how-helps-you-qr.small' | translate }}
+                | {{ 'landing.how-helps-you-qr.h2' | translate }}
+              p {{ 'landing.how-helps-you-qr.p' | translate }}
+          .row.no-margin
+            .col.text-center.no-margin(style="margin-top:16px;")
+              h3 {{ 'landing.how-helps-you-allfn.h3' | translate }}
+              p.no-margin {{ 'landing.how-helps-you-allfn.p' | translate }}
+          .row.d-flex.space-between.wrap.carousel-wrapper(style="margin-top:0;")
+            .col.text-center.fn-square
+              i.fa-2x.fal.fa-map-marked-alt
+              h4 {{ 'landing.how-helps-you-fn-gmaps.h4' | translate }}
+              p {{ 'landing.how-helps-you-fn-gmaps.p' | translate }}
+            .col.text-center.fn-square
+              i.fa-2x.fal.fa-tshirt
+              h4 {{ 'landing.how-helps-you-fn-dresscode.h4' | translate }}
+              p {{ 'landing.how-helps-you-fn-dresscode.p' | translate }}
+            .col.text-center.fn-square
+              i.fa-2x.fab.fa-instagram
+              h4 {{ 'landing.how-helps-you-fn-instagram.h4' | translate }}
+              p {{ 'landing.how-helps-you-fn-instagram.p' | translate }}
+            .col.text-center.fn-square
+              i.fa-2x.fal.fa-clipboard-check
+              h4 {{ 'landing.how-helps-you-fn-confirmation.h4' | translate }}
+              p {{ 'landing.how-helps-you-fn-confirmation.p' | translate }}
+            .col.text-center.fn-square
+              i.fa-2x.fal.fa-university
+              h4 {{ 'landing.how-helps-you-fn-gift.h4' | translate }}
+              p {{ 'landing.how-helps-you-fn-gift.p' | translate }}
+            .col.text-center.fn-square
+              i.fa-2x.fal.fa-comment-music
+              h4 {{ 'landing.how-helps-you-fn-music.h4' | translate }}
+              p {{ 'landing.how-helps-you-fn-music.p' | translate }}
+            .col.text-center.fn-square
+              i.fa-2x.fal.fa-calendar-alt
+              h4 {{ 'landing.how-helps-you-fn-savethedate.h4' | translate }}
+              p {{ 'landing.how-helps-you-fn-savethedate.p' | translate }}
+            .col.text-center.fn-square
+              i.fa-2x.fal.fa-infinity
+              h4 {{ 'landing.how-helps-you-fn-infinitguest.h4' | translate }}
+              p {{ 'landing.how-helps-you-fn-infinitguest.p' | translate }}
+        
+      //- Como funciona?
+      section.how-it-works.inverted
+        .container
+          .row.text-center
+            .col
+              h2 {{ 'landing.how-helps-you-fn-howitworks.h2' | translate }}
+              p {{ 'landing.how-helps-you-fn-howitworks.p' | translate }}
+          .row.d-flex.gutted.step-1
+            .col.text-container
+              h3
+                big.number 1
+                | {{ 'landing.how-helps-you-fn-howitworks1.h3' | translate }}
+              p {{ 'landing.how-helps-you-fn-howitworks1.p' | translate }}
+            .col
+              img.img-fluid(src="/public/media/cover-template-0.jpg")
+            .col.desktop-only
+              img.img-fluid(src="/public/media/cover-template-1.jpg")
+            .col.desktop-only
+              img.img-fluid(src="/public/media/cover-template-2.jpg")
+          .row.d-flex.gutted.step-2
+            .col.order-2
+              img.img-fluid(src="public/media/customizing.png")
+            .col.order-1
+              h3
+                big.number 2
+                | {{ 'landing.how-helps-you-fn-howitworks2.h3' | translate }}
+              p {{ 'landing.how-helps-you-fn-howitworks2.p' | translate }}
+          .row.d-flex.gutted
+            .col.text-container
+              h3
+                big.number 3
+                | {{ 'landing.how-helps-you-fn-howitworks3.h3' | translate }}
+              p {{ 'landing.how-helps-you-fn-howitworks3.p' | translate }}
+            .col
+              img.img-fluid(src="public/media/sharing.jpeg")
+      
+      //- Quienes confian en nosotros? Feedback de la gente
+      section.testimonials
+        .container
+          .row
+            .col.text-center
+              h2 {{ 'landing.testimonials.h2' | translate }}
+              p {{ 'landing.testimonials.p' | translate }} 
+          .row.d-flex
+            .col
+              img(src="/public/media/person-placeholder.jpg")
+            .col(style="display: flex; align-items: center;")
+              blockquote
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pellentesque, tellus id pretium pellentesque, dolor magna porta lorem, a 
+                p.author - Juan Pelota
+                  small CEO en una gran empresa
+                a(href="#") {{ 'landing.testimonials.cta' | translate }}
+      
+      //- Pricing
+      section.pricing
+        .container
+          h2.text-center {{ 'landing.pricing.h2' | translate }}
+          p.text-center {{ 'landing.pricing.p' | translate }}
+          .row.d-flex.no-wrap.product-wrapper
+            ul.col
+              li.icon
+                img(src="/public/media/plane-1.png")
+              li
+                h3.text-center {{ 'landing.pricing-payg.h3' | translate }}
+                p.dsc {{ 'landing.pricing-payg.p' | translate }}
+              li
+                h4 1 slot
+                span.currency {{ 'currency' | translate }}
+                span.price {{ 'landing.pricing-payg.price' | translate }}
+            ul.col
+              li.icon
+                img(src="/public/media/plane-2.png")
+              li
+                h3.text-center {{ 'landing.pricing-suscription.h3' | translate }}
+                p.dsc {{ 'landing.pricing-suscription.p' | translate }}
+              li
+                h4 {{slots}} slots
+                span.currency {{ 'currency' | translate }}
+                span.price {{price}}
+                span.suscription / {{ 'landing.pricing-suscription.unit' | translate }}
+                span.small-note {{ 'landing.pricing-suscription.payment' | translate }}
+                p.dsc PrecioUnitario: {{unitPrice}}
+              li
+                input(type="range" min="1" max="9" ng-model="planSize" ng-change="calc()")
+            //-
+              ul.col
+                li.icon
+                  img(src="/public/media/plane-3.png")
+                li
+                  h3.text-center Professional
+                li Ilimitados eventos simultaneos
+                li Suscripcion
+                li Estadisticas
+                li Eco-friendly
+                li API Desarrolladores
+                li Made in Italy
+                li.price Quiero que me llamen
+          h3.text-center {{ 'landing.pricing-risk.h3' | translate }}
+          p.text-center {{ 'landing.pricing-risk.p' | translate }}
+          .row.text-center
+            .col
+              button.btn-primary {{ 'landing.pricing-risk.cta' | translate }}
+              p.text-hint {{ 'landing.pricing-risk-no-credit-card.p' | translate }}
+      //- ContactUs
+      section.contact-us
+        .container
+          h2.text-center {{ 'landing.faq.h2' | translate }}
+          p.text-center {{ 'landing.faq.p' | translate }}
+          .row.d-flex
+            .col
+              details
+                summary {{ 'landing.faq-question1.question' | translate }}
+                | {{ 'landing.faq-question1.answer' | translate }}
+              
+              details
+                summary {{ 'landing.faq-question2.question' | translate }}
+                | {{ 'landing.faq-question2.answer' | translate }}
+              
+              details
+                summary {{ 'landing.faq-question3.question' | translate }}
+                | {{ 'landing.faq-question3.answer' | translate }}
+                
+              details
+                summary {{ 'landing.faq-question4.question' | translate }}
+                | {{ 'landing.faq-question4.answer' | translate }}
+              
+              details
+                summary {{ 'landing.faq-question5.question' | translate }}
+                | {{ 'landing.faq-question5.answer' | translate }}
+              
+              details
+                summary {{ 'landing.faq-question6.question' | translate }}
+                | {{ 'landing.faq-question6.answer' | translate }}
+              
+              details
+                summary {{ 'landing.faq-question7.question' | translate }}
+                | {{ 'landing.faq-question7.answer' | translate }}
+
+          .row
+            p.text-center {{ 'landing.faq-writeus.p' | translate }}
+            .col.text-center.fa-2x
+              a.btn-contact-us(href="https://wa.me/393314470826?text=Ciao!%20Vorrei%20sapere%di%20più%20sul%20servizzio")
+                i.fab.fa-whatsapp
+              a.btn-contact-us(href="https://docs.google.com/forms/d/e/1FAIpQLSeTYCd29YZH_Kz6Sutp2MxWdE7Q5q1A6cSGnMSv84OTmEnvLQ/viewform")
+                i.fal.fa-envelope
+              a.btn-contact-us(href="https://telegram.me/pieroblunda")
+                i.fab.fa-telegram-plane
+      section.suscribe
+        .container.text-center
+          h3.text-center {{ 'landing.suscribe.h3' | translate }}
+          input(type="email" placeholder="example@gmail.com")
+          input(type="button" value="Send")
+    footer.text-center 2020 - Copiright - Italy
+    include landing-scripts.pug

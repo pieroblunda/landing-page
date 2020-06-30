@@ -1,0 +1,160 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    include wizard-stylesheets.pug
+    title Hello, world!
+  body(ng-app="App" ng-controller="wizardController")
+    include wizard-header.pug
+    main
+      article
+        aside
+          section.categories(ng-if="currentTabConfig === 'categories'")
+            .img-wrapper.type-wedding(ng-click="setCategory('wedding')")
+              .img-overlay(ng-class="{active: category === 'wedding'}")
+                p.text-layer Casamiento
+            .img-wrapper.type-childrenbirth(ng-click="setCategory('childrenbirth')")
+              .img-overlay(ng-class="{active: category === 'childrenbirth'}")
+                p.text-layer Cumpleanos infantiles
+          
+          section.templates(ng-if="currentTabConfig === 'templates'")
+            .img-wrapper(
+            ng-repeat="template in allTemplates"
+            ng-style="{backgroundImage: 'url({{template.cover}})'}"
+            ng-click="setTemplate(template)")
+              .img-overlay(ng-class="{active: eventOptions.templateCode === template.templateCode}")
+
+          section(ng-if="currentTabConfig === 'date'")
+            label Fecha del evento
+            input(
+            type="date"
+            ng-model="eventOptions.date"
+            ng-enter="goNext();")
+            
+          section.pictures(ng-if="currentTabConfig === 'pictures'")
+            div(ng-if="imageTab === 'gift'")
+              dropzone(ng-model="imgModel" properties="imgProperties")
+              .img-wrapper(
+              ng-repeat="picture in gallery | filter:imageTab"
+              ng-style="{backgroundImage: 'url({{picture.path}})'}"
+              ng-click="setImage(imageTab, picture.path)")
+                .img-overlay(ng-class="{active: eventOptions.imgPathGift === picture.path}")
+            div(ng-if="imageTab === 'party'")
+              .img-wrapper(
+              ng-repeat="picture in gallery | filter:imageTab"
+              ng-if="picture.tags.includes(imageTab)"
+              ng-style="{backgroundImage: 'url({{picture.path}})'}"
+              ng-click="setImage(imageTab, picture.path)")
+                .img-overlay(ng-class="{active: eventOptions.imgPathParty === picture.path}")
+            div(ng-if="imageTab === 'church'")
+              .img-wrapper(
+              ng-repeat="picture in gallery | filter:imageTab"
+              ng-if="picture.tags.includes(imageTab)"
+              ng-style="{backgroundImage: 'url({{picture.path}})'}"
+              ng-click="setImage(imageTab, picture.path)")
+                .img-overlay(ng-class="{active: eventOptions.imgPathChurh === picture.path}")
+            div(ng-if="imageTab === 'legal'")
+              .img-wrapper(
+              ng-repeat="picture in gallery | filter:imageTab"
+              ng-if="picture.tags.includes(imageTab)"
+              ng-style="{backgroundImage: 'url({{picture.path}})'}"
+              ng-click="setImage(imageTab, picture.path)")
+                .img-overlay(ng-class="{active: eventOptions.imgPathLegal === picture.path}")
+
+          section(ng-if="currentTabConfig === 'host'")
+            input(
+            type="text"
+            ng-model="eventOptions.name"
+            ng-enter="goNext();")
+
+          section.dress-code(ng-if="currentTabConfig === 'dresscode'")
+            button.btn-dresscode(ng-click="setDressCode('free');goNext();")
+              i.fal.fa-laugh.fa-3x
+              | Free
+            button.btn-dresscode(ng-click="setDressCode('costume');goNext();")
+              i.fal.fa-mask.fa-3x
+              | Disfrazado
+            button.btn-dresscode(ng-click="setDressCode('casual');goNext();")
+              i.fal.fa-tshirt.fa-3x
+              | Casual
+            button.btn-dresscode(ng-click="setDressCode('sport');goNext();")
+              i.fal.fa-futbol.fa-3x
+              | Sport
+            button.btn-dresscode(ng-click="setDressCode('elegant');goNext();")
+              i.fal.fa-scarf.fa-3x
+              | Elegant
+            button.btn-dresscode(ng-click="setDressCode('formal');goNext();")
+              i.fal.fa-shoe-prints.fa-3x.fa-rotate-270
+              | Formal
+          
+          section(ng-if="currentTabConfig === 'location'")
+            label Nombre
+            input(type="text" ng-model="eventOptions.place")
+            
+            label Direccion
+            input(
+            type="text"
+            ng-model="eventOptions.address"
+            ng-enter="goNext();")
+          
+          section.done(ng-if="currentTabConfig === 'done'")
+            h2 Tu evento ya esta creado!
+            a(ng-href="/sites/{{eventOptions.name}}") Visitar Sitio
+            code.url-container
+              | https://{{currentURL.host}}/sites/{{eventOptions.name}}
+              i.fal.fa-copy
+            
+            h2 Compartelo con tus amigos
+            //- TODO: https://core.telegram.org/widgets/share
+            //- TODO: https://www.addtoany.com/buttons/for/website
+            .share-container
+              a(href="#")
+                i.fal.fa-share.fa-2x.icon-share
+              a(ng-href="{{getEncodeURL('telegram')}}")
+                i.fab.fa-telegram.fa-2x.icon-share
+              a(href="https://www.addtoany.com/add_to/telegram?linkurl=https%3A%2F%2Flocalhost%3A4000%2Fsites%2FPiero&amp;linkname=" target="_blank")
+                i.fab.fa-telegram.fa-2x.icon-share
+              a(href="https://www.addtoany.com/add_to/whatsapp?linkurl=https%3A%2F%2Flocalhost%3A4000%2Fsites%2FPiero&amp;linkname=" target="_blank")
+                i.fab.fa-whatsapp.fa-2x.icon-share
+            .demo-container
+              i.fal.fa-engine-warning.fa-3x
+              p Tu evento estara disponible por 72hs, luego, se eliminara el contenido que creaste.
+              p Para que tu evento este disponible por mas tiempo, pasate a premium.
+              button.read-more leer mas
+              button.purchase Pasarme a Premium 
+              
+            
+          //- Menu NavBar
+          section.control-bar
+            button(ng-click="goBack()")
+              i.fal.fa-long-arrow-left
+            button(ng-click="preview()")
+              i.fal.fa-eye
+            button(ng-click="goNext()")
+              i.fal.fa-long-arrow-right
+
+          //-
+            nav
+              button(ng-click="setCurrentTabConfig(0)" ng-class="{'active': currentTabConfig === 0}")
+                i.fal.fa-file-alt
+              button(ng-click="setCurrentTabConfig(1)" ng-class="{'active': currentTabConfig === 1}")
+                i.fal.fa-calendar-alt
+              button(ng-click="setCurrentTabConfig(2)" ng-class="{'active': currentTabConfig === 2}")
+                i.fal.fa-image
+              button(ng-click="setCurrentTabConfig(3)" ng-class="{'active': currentTabConfig === 3}")
+                i.fal.fa-bookmark
+              button(ng-click="setCurrentTabConfig(4)" ng-class="{'active': currentTabConfig === 4}")
+                i.fal.fa-tshirt
+              button(ng-click="setCurrentTabConfig(5)" ng-class="{'active': currentTabConfig === 5}")
+                i.fal.fa-map-marked-alt
+              button(ng-click="setCurrentTabConfig(6)" ng-class="{'active': currentTabConfig === 6}")
+                i.fal.fa-flag-checkered
+        .iframe-container
+          iframe(
+          src="https://localhost:4000/sites/Piero"
+          scrolling="no"
+          onload="this.style.height=(this.contentDocument.body.scrollHeight+45) +'px';")
+          button OK
+
+    include wizard-scripts.pug

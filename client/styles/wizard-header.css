@@ -1,0 +1,15 @@
+header {
+  background-color: headerBgColor;
+  height: headerHeight;
+  padding: 4px;
+  display: flex;
+  color: #fff;
+}
+header h1 {
+  flex: 1 0 auto;
+  font-size: 25px;
+  line-height: 37px;
+  margin: 0;
+  text-align: center;
+}
+/*# sourceMappingURL=wizard-header.css.map */
